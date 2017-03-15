@@ -1,0 +1,113 @@
+@charset "UTF-8";
+// ------------------------------------------------------------
+// MIXINS
+// ------------------------------------------------------------
+
+// -------------------------
+// Basics
+// -------------------------
+
+@mixin size($value) {
+  $width: nth($value, 1);
+  $height: $width;
+
+  @if length($value) > 1 {
+    $height: nth($value, 2);
+  }
+
+  width: $width;
+  height: $height;
+}
+
+
+// -------------------------
+// Layout
+// -------------------------
+
+/* -----
+Positioning
+----- */
+
+@mixin absolute() {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left:0;
+  margin: auto;
+}
+
+@mixin fixed() {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left:0;
+  margin: auto;
+}
+
+@mixin centerBlock() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* -----
+Visibility
+----- */
+
+@mixin visible(){
+  opacity: 1;
+  visibility: visible;
+}
+
+@mixin hidden() {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+/* -----
+Utils
+----- */
+
+@mixin clearfix() {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+
+// -------------------------
+// Buttons
+// -------------------------
+
+@mixin resetBtn() {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+
+  &:not(input) { user-select: none; }
+
+  &:focus { outline: none; }
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+@mixin unselectable() {
+  cursor: default;
+  user-select: none;
+}

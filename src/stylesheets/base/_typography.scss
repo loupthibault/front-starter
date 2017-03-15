@@ -1,0 +1,32 @@
+// ------------------------------------------------------------
+// TYPOGRAPHY
+// ------------------------------------------------------------
+
+html {
+  font-family: $base-font;
+  color: $base-font-color;
+  font-size: $px-base;
+  font-weight: $regular;
+
+  @include mobile {
+    font-size: $px-mobile;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:focus {
+		outline: none;
+	}
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1.2em;
+}

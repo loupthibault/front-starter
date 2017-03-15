@@ -1,0 +1,45 @@
+if(!TASK_CONFIG.html) return;
+
+const path         = require('path');
+const fs           = require('fs');
+const browserSync  = require('browser-sync');
+const gulp         = require('gulp');
+const gulpif       = require('gulp-if');
+const data         = require('gulp-data');
+const htmlmin      = require('gulp-htmlmin');
+const render       = require('gulp-nunjucks-render');
+const handleErrors = require('../lib/handleErrors');
+
+const htmlTask = function() {
+
+  const exclude = '!' + path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.html.src, '**/{' + TASK_CONFIG.html.excludeFolders.join(',') + '}/**');
+
+  const paths = {
+    src: [path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.html.src, '**/*.{' + TASK_CONFIG.html.extensions + '}'), exclude],
+    dest: path.resolve(process.env.PWD, PATH_CONFIG.dest, PATH_CONFIG.html.dest)
+  };
+
+  const getData = TASK_CONFIG.html.getData || function(file) {
+    const dataPath = path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.html.src, TASK_CONFIG.html.dataFile);
+    // TASK_CONFIG.svgSprite && (data.svgPath = PATH_CONFIG.icons.dest);
+    return JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+  };
+
+  return gulp.src(paths.src)
+    .pipe(data(getData))
+    .on('error', handleErrors)
+    .pipe(render({
+      path: [path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.html.src)],
+      envOptions: {
+        watch: false
+      }
+    }))
+    .on('error', handleErrors)
+    .pipe(gulpif(global.production, htmlmin(TASK_CONFIG.html.htmlmin)))
+    .pipe(gulp.dest(paths.dest))
+    .pipe(browserSync.stream());
+
+};
+
+gulp.task('html', htmlTask);
+module.exports = htmlTask;
