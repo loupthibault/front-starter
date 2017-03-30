@@ -9,18 +9,18 @@ module.exports = function(env) {
   const jsSrc   = path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.javascripts.src);
   const jsDest  = path.resolve(process.env.PWD, PATH_CONFIG.dest, PATH_CONFIG.javascripts.dest);
   const publicPath = pathToUrl(TASK_CONFIG.javascripts.publicPath || PATH_CONFIG.javascripts.dest, '/');
-
+  const extensions = TASK_CONFIG.javascripts.extensions || ['js', 'jsx', 'json'];
   const dotExtensions = TASK_CONFIG.javascripts.extensions.map( (extension) => '.' + extension );
 
   const filenamePattern = '[name].js';
 
   // Attach default babel loader config to webpack
   let babelLoader = {
-    test: new RegExp(`(\\${dotExtensions.join('$|\\.')}$)`),
+    test: new RegExp(`(\\${extensions.join('$|\\.')}$)`),
     loader: 'babel-loader',
     exclude: /node_modules/,
     query: TASK_CONFIG.javascripts.babel || {
-      presets: ['es2015']
+      presets: ['es2015', 'stage-1']
     }
   };
 
@@ -112,9 +112,9 @@ module.exports = function(env) {
   }
 
   if (env === 'production') {
-    if (rev) {
-      webpackConfig.plugins.push(new webpackManifest(PATH_CONFIG.javascripts.dest, PATH_CONFIG.dest))
-    }
+    // if (rev) {
+    //   webpackConfig.plugins.push(new webpackManifest(PATH_CONFIG.javascripts.dest, PATH_CONFIG.dest))
+    // }
 
     webpackConfig.plugins.push(
       new webpack.DefinePlugin({
