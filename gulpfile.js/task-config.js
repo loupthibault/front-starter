@@ -32,7 +32,7 @@ module.exports = {
     htmlmin: {
       collapseWhitespace: true
     },
-    extensions: ["html", "json", ".svg"],
+    extensions: ["html", "json", "svg"],
     excludeFolders: ["_layouts", "_shared", "_macros", "_data", "_svgs"]
   },
 

@@ -22,8 +22,7 @@ function loadBytes(url) {
 
 function loadJson(url) {
 
-  return _ajax( url, '' )
-    .then(() => JSON.parse(str));
+  return _ajax( url, '' ).then(JSON.parse);
 }
 
 function _ajax(url, rtype) {
