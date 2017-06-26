@@ -13,7 +13,7 @@ const svgSpriteTask = function() {
   };
 
   return gulp.src(settings.src)
-    .pipe(svgstore())
+    .pipe(svgstore(TASK_CONFIG.svgSprite.svgstore))
     .pipe(gulp.dest(settings.dest))
     .pipe(browserSync.stream());
 };

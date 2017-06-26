@@ -32,6 +32,10 @@ function swap(input, indexA, indexB) {
   input[indexB] = temp;
 }
 
+function without(arr, ...values) {
+  return arr.filter(el => !values.some(exclude => el === exclude));
+}
+
 
 module.exports = {
   combine: combine,
@@ -39,5 +43,6 @@ module.exports = {
   max: max,
   min: min,
   shuffle: shuffle,
-  swap: swap
+  swap: swap,
+  without: without
 };

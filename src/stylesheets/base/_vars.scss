@@ -8,14 +8,18 @@
 $base-images: "../images";
 $base-fonts: "../fonts";
 
+
 // -------------------------
 // Colors
 // -------------------------
 $white: #fff;
 $black: #333;
+$red: #A22;
 
 $base-background: $white;
 $base-font-color: $black;
+$base-error-color: $red;
+
 
 // -------------------------
 // Typography
@@ -24,14 +28,23 @@ $base-font-color: $black;
 /* -----
 Font size
 ----- */
-$px-mobile: 13px;
+$px-mobile: 12px;
+$px-tablet: 14px;
 $px-base: 16px;
+
+$px-font-xs: 12px;
+$px-font-s: 14px;
+$px-font-m: 16px;
+$px-font-l: 18px;
+$px-font-xl: 20px;
+
 
 /* -----
 Font Family
 ----- */
 $helvetica: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 $base-font: -apple-system, $helvetica;
+
 
 /* -----
 Font Weight
@@ -44,7 +57,43 @@ $bold: 600;
 // -------------------------
 // Layout
 // -------------------------
+
+/* -----
+Outer-container
+----- */
 $max-width: 900px;
+$outer-margin: 100px;
+
+
+/* -----
+Border
+----- */
+$border-color: $black;
+$border: 1px solid $border-color;
+
+
+/* -----
+Grid
+----- */
+$col-1:  8.33333333333%;
+$col-2:  16.6666666667%;
+$col-3: 		      25.0%;
+$col-4:  33.3333333333%;
+$col-5:  41.6666666667%;
+$col-6: 		      50.0%;
+$col-7:  58.3333333333%;
+$col-8:  66.6666666667%;
+$col-9: 		      75.0%;
+$col-10: 83.3333333333%;
+$col-11: 91.6666666667%;
+$col-12: 		       100%;
+
+
+/* -----
+Ratios
+----- */
+$ratio16-9: 56.25%;
+
 
 // -------------------------
 // Easing

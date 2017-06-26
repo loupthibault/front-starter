@@ -8,9 +8,19 @@ html {
   font-size: $px-base;
   font-weight: $regular;
 
-  @include mobile {
-    font-size: $px-mobile;
-  }
+  @include mobile { font-size: $px-mobile; }
+  @include tablet { font-size: $px-tablet; }
+  @include desktop { font-size: $px-base; }
+}
+
+
+/* -----
+Global
+----- */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1.2em;
 }
 
 a {
@@ -25,8 +35,11 @@ ul {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 1.2em;
-}
+/* -----
+Separator
+----- */
+
+
+/* -----
+Headings
+----- */

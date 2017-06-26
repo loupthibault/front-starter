@@ -19,14 +19,13 @@ const htmlTask = function() {
     dest: path.resolve(process.env.PWD, PATH_CONFIG.dest, PATH_CONFIG.html.dest)
   };
 
-  const getData = TASK_CONFIG.html.getData || function(file) {
+  const dataFunction = TASK_CONFIG.html.dataFunction || function(file) {
     const dataPath = path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.html.src, TASK_CONFIG.html.dataFile);
-    // TASK_CONFIG.svgSprite && (data.svgPath = PATH_CONFIG.icons.dest);
-    return JSON.parse(fs.readFileSync(dataPath, 'utf8'))
+    return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   };
 
   return gulp.src(paths.src)
-    .pipe(data(getData))
+    .pipe(data(dataFunction))
     .on('error', handleErrors)
     .pipe(render({
       path: [path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.html.src)],

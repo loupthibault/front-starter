@@ -9,6 +9,10 @@ const watchTask = function() {
     switch (taskName) {
       case 'svgSprite':
         return PATH_CONFIG.icons;
+      case 'html':
+        return PATH_CONFIG.html;
+      case 'static':
+        return PATH_CONFIG.static;
       default:
         return PATH_CONFIG[taskName];
     }

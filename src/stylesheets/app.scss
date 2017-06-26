@@ -1,5 +1,12 @@
 
-@import 'normalize';
+/* -----
+Import from node modules
+----- */
+@import 'normalize.css/normalize';
+
+/* -----
+Base
+----- */
 @import 'base/_vars';
 @import "base/_functions";
 @import "base/_mixins";
@@ -7,7 +14,8 @@
 @import 'base/_medias';
 @import 'base/_fonts';
 @import 'base/_typography';
-
+@import 'base/_images';
+@import 'base/_video';
 
 * {
 	margin: 0;
@@ -28,6 +36,14 @@ body{
   background: $base-background;
   backface-visibility: hidden;
 	user-select: none;
+
+	text-align: center;
+}
+
+
+.sprite.-twitter {
+	width: 100px;
+	display: inline-block;
 }
 
 
@@ -35,5 +51,3 @@ body{
 Components
 ----- */
 @import 'components/_buttons';
-@import 'components/_images';
-@import 'components/_video';

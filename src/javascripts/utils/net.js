@@ -31,12 +31,11 @@ function _ajax(url, rtype) {
 
     const method = 'GET';
     var xhr = new XMLHttpRequest();
+    rtype === 'arraybuffer' && xhr.setRequestHeader("Accept", 'application/octet-stream');
 
     xhr.open(method, url, true);
     xhr.responseType = rtype;
-
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-    rtype === 'arraybuffer' && xhr.setRequestHeader("Accept", 'application/octet-stream');
     
     xhr.onerror = () => { reject(new Error(`Net._ajax() - error while loading '${url}'`)) };
 

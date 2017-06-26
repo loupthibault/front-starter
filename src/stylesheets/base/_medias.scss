@@ -7,7 +7,7 @@ $media-query: 'only screen and';
 // Breakpoints
 $breakpoint-tablet: 641px;
 $breakpoint-desktop: 1024px;
-$breakpoint-desktop-xl: 1130px;
+$breakpoint-desktop-xl: 1280px;
 
 // Queries string
 $mobile:      '#{$media-query} (max-width: #{$breakpoint-tablet - 1})';

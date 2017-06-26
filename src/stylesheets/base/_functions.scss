@@ -7,8 +7,8 @@
 // Basics
 // -------------------------
 
-@function rem($pxval) {
-  @return ( $pxval / $px-base ) * 1rem;
+@function rem($pxval, $base:$px-base) {
+  @return ( $pxval / $base ) * 1rem;
 }
 
 @function em($pxval) {

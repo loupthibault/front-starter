@@ -14,10 +14,9 @@ img {
 }
 
 .img { 
-  overflow: hidden;
 
   img {
-    width: 100%;
+    @include size(100% auto);
     z-index: 0;
     opacity: 0;
     transform-origin: center center;
@@ -32,21 +31,5 @@ Status
 .img.loaded {
   img {
     opacity: 1;
-  }
-}
-
-/* -----
-Extends
------ */
-.img.img--cover {
-
-  img {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: auto;
-    height: auto;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
   }
 }

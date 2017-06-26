@@ -1,4 +1,5 @@
 const compact = require('lodash/compact');
+const isEmpty = require('lodash/isEmpty');
 
 // Grouped by what can run in parallel;
 const assetTasks = ['images', 'svgSprite'];
@@ -19,8 +20,14 @@ module.exports = function(env) {
     return !!value;
   }
 
+  function findExistingTasks(candidates) {
+    var tasks = compact( candidates.map( matchFilter ).filter( exists ) );
+
+    return isEmpty(tasks) ? false : tasks;
+  }
+
   return {
-    assetTasks: compact(assetTasks.map(matchFilter).filter(exists)),
-    codeTasks: compact(codeTasks.map(matchFilter).filter(exists))
+    assetTasks: findExistingTasks(assetTasks),
+    codeTasks: findExistingTasks(codeTasks)
   };
 }
