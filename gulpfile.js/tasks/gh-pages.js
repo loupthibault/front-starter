@@ -3,7 +3,7 @@ const gulp    = require('gulp');
 const os      = require('os');
 const path    = require('path');
 
-const deployTask = function() {
+const ghPagesTask = function() {
   const pkg = require(path.resolve(process.env.PWD, 'package.json'));
 
   const settings = {
@@ -18,5 +18,5 @@ const deployTask = function() {
     .pipe(ghPages(settings.ghPages));
 };
 
-gulp.task('deploy', ['build'], deployTask);
-module.exports = deployTask;
+gulp.task('deploy', ['build'], ghPagesTask);
+module.exports = ghPagesTask;

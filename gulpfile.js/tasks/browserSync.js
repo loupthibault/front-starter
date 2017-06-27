@@ -1,17 +1,17 @@
 if(global.production) return;
 
-const path              = require('path');
-const browserSync       = require('browser-sync');
-const gulp              = require('gulp');
-const webpack           = require('webpack');
-const webpackMultiConfig = require('../lib/webpack-multi-config');
-const pathToUrl         = require('../lib/pathToUrl');
+const browserSync         = require('browser-sync')
+const gulp                = require('gulp')
+const webpack             = require('webpack')
+const webpackMultiConfig  = require('../lib/webpack-multi-config')
+const pathToUrl           = require('../lib/pathToUrl')
+const path                = require('path')
 
 const browserSyncTask = function() {
 
   const webpackConfig = webpackMultiConfig('development');
-  const compiler = webpack(webpackConfig);
-  const proxyConfig = TASK_CONFIG.browserSync.proxy || null;
+  const compiler      = webpack(webpackConfig);
+  const proxyConfig   = TASK_CONFIG.browserSync.proxy || null;
 
   if (typeof proxyConfig === 'string') {
     TASK_CONFIG.browserSync.proxy = {
@@ -36,10 +36,11 @@ const browserSyncTask = function() {
   server.middleware = [
     require('webpack-dev-middleware')(compiler, {
       stats: 'errors-only',
+      watchOptions: TASK_CONFIG.browserSync.watchOptions || {},
       publicPath: pathToUrl('/', webpackConfig.output.publicPath)
     }),
     require('webpack-hot-middleware')(compiler)
-  ]
+  ];
 
   browserSync.init(TASK_CONFIG.browserSync);
 }

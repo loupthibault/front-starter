@@ -3,10 +3,13 @@ const gulpSequence    = require('gulp-sequence');
 const getEnabledTasks = require('../lib/getEnabledTasks');
 
 const defaultTask = function(cb) {
+  
   const tasks = getEnabledTasks('watch');
   const static = TASK_CONFIG.static ? 'static' : false;
-  gulpSequence('clean', tasks.assetTasks, tasks.codeTasks, static, 'watch', cb);
-}
+  const { prebuild, postbuild } = TASK_CONFIG.additionalTasks.development;
+
+  gulpSequence('clean', prebuild, tasks.assetTasks, tasks.codeTasks, static, postbuild, 'watch', cb);
+};
 
 gulp.task('default', defaultTask);
 module.exports = defaultTask;

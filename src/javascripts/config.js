@@ -1,4 +1,3 @@
-// import sniffer  from 'sniffer';
 
 const config  = {
 

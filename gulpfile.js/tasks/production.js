@@ -5,10 +5,14 @@ const getEnabledTasks = require('../lib/getEnabledTasks');
 const productionTask = function(cb) {
   global.production = true;
 
-  const tasks = getEnabledTasks('production');
+  PATH_CONFIG.finalDest = PATH_CONFIG.dest;
+  
+  const tasks = getEnabledTasks('production')
+  // const rev = TASK_CONFIG.production.rev ? 'rev': false;
   const static = TASK_CONFIG.static ? 'static' : false;
+  const { prebuild, postbuild } = TASK_CONFIG.additionalTasks.production;
 
-  gulpSequence('clean', tasks.assetTasks, tasks.codeTasks, 'size-report', static, cb);
+  gulpSequence('clean', prebuild, tasks.assetTasks, tasks.codeTasks, rev, 'size-report', static, postbuild, cb);
 }
 
 gulp.task('build', productionTask);

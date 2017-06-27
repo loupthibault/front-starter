@@ -4,7 +4,6 @@ if( !TASK_CONFIG.javascripts ) return;
 
 const path          = require('path');
 const webpack       = require('webpack');
-// const webpackManifeset
 const querystring   = require('querystring');
 const pathToUrl     = require('./pathToUrl');
 
@@ -16,7 +15,6 @@ module.exports = function (env) {
   const jsSrc       = path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.javascripts.src);
   const jsDest      = path.resolve(process.env.PWD, PATH_CONFIG.dest, PATH_CONFIG.javascripts.dest);
   const publicPath  = pathToUrl(TASK_CONFIG.javascripts.publicPath || PATH_CONFIG.javascripts.dest, '/');
-
 
   function ensureLeadingDot(string) {
     return string.indexOf('.') === 0 ? string : `.${string}`;

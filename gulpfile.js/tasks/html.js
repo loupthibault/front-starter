@@ -24,15 +24,13 @@ const htmlTask = function() {
     return JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   };
 
+  const nunjucksRenderPath = [ path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.html.src) ];
+  TASK_CONFIG.html.nunjucksRender.path = TASK_CONFIG.html.nunjucksRender.path || nunjucksRenderPath;
+
   return gulp.src(paths.src)
     .pipe(data(dataFunction))
     .on('error', handleErrors)
-    .pipe(render({
-      path: [path.resolve(process.env.PWD, PATH_CONFIG.src, PATH_CONFIG.html.src)],
-      envOptions: {
-        watch: false
-      }
-    }))
+    .pipe(render(TASK_CONFIG.html.nunjucksRender))
     .on('error', handleErrors)
     .pipe(gulpif(global.production, htmlmin(TASK_CONFIG.html.htmlmin)))
     .pipe(gulp.dest(paths.dest))

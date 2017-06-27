@@ -1,10 +1,3 @@
-const path = require('path');
-
-// Fallback for windows backs out of node_modules folder to root of project
-process.env.PWD = process.env.PWD || path.resolve(process.cwd(), '../../');
-global.PATH_CONFIG = require('./path-config.json');
-global.TASK_CONFIG = require('./task-config');
-
 /*
   gulpfile.js
   ===========
@@ -18,7 +11,19 @@ global.TASK_CONFIG = require('./task-config');
   when you run `gulp`.
 */
 
-var requireDir = require('require-dir');
+const gulp        = require('gulp');
+const path        = require('path');
+const requireDir  = require('require-dir');
+
+// Fallback for windows backs out of node_modules folder to root of project
+process.env.PWD = process.env.PWD || path.resolve(process.cwd(), '../../');
+
+// Globally expose config objects
+global.PATH_CONFIG = require('./path-config.json');
+global.TASK_CONFIG = require('./lib/get-task-config');
 
 // Require all tasks in gulpfile.js/tasks, including subfolders
 requireDir('./tasks', { recurse: true });
+
+// Initialize any additional user-provided tasks
+TASK_CONFIG.additionalTasks.initialize(gulp, PATH_CONFIG, TASK_CONFIG);
