@@ -52,7 +52,7 @@ module.exports = {
     htmlmin: {
       collapseWhitespace: true
     },
-    excludeFolders: ['_layouts', '_shared', '_macros', '_data'],
+    excludeFolders: ['_layouts', '_shared', '_macros', '_data', '_svgs'],
     extensions: ['html', 'njk', 'json', 'svg']
   },
 

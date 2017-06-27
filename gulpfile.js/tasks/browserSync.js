@@ -1,11 +1,15 @@
 if(global.production) return;
 
-const browserSync         = require('browser-sync')
-const gulp                = require('gulp')
-const webpack             = require('webpack')
-const webpackMultiConfig  = require('../lib/webpack-multi-config')
-const pathToUrl           = require('../lib/pathToUrl')
-const path                = require('path')
+const browserSync         = require('browser-sync');
+const gulp                = require('gulp');
+const webpack             = require('webpack');
+const webpackMultiConfig  = require('../lib/webpack-multi-config');
+const pathToUrl           = require('../lib/pathToUrl');
+const path                = require('path');
+
+const resolvePath = function(glob) {
+  return path.resolve(process.env.PWD, glob);
+};
 
 const browserSyncTask = function() {
 
@@ -21,14 +25,15 @@ const browserSyncTask = function() {
 
   // Resolve path from PWD
   if(TASK_CONFIG.browserSync.server && TASK_CONFIG.browserSync.server.baseDir) {
-    TASK_CONFIG.browserSync.server.baseDir = path.resolve(process.env.PWD, TASK_CONFIG.browserSync.server.baseDir);
+
+    TASK_CONFIG.browserSync.server.baseDir = Array.isArray( TASK_CONFIG.browserSync.server.baseDir ) 
+                                            ? TASK_CONFIG.browserSync.server.baseDir.map( resolvePath ) 
+                                            : resolvePath( TASK_CONFIG.browserSync.server.baseDir );
   }
 
   // Resolve files from PWD
   if(TASK_CONFIG.browserSync.files) {
-    TASK_CONFIG.browserSync.files = TASK_CONFIG.browserSync.files.map(function(glob) {
-      return path.resolve(process.env.PWD, glob);
-    })
+    TASK_CONFIG.browserSync.files = TASK_CONFIG.browserSync.files.map( resolvePath );
   }
 
   const server = TASK_CONFIG.browserSync.proxy || TASK_CONFIG.browserSync.server;
@@ -43,7 +48,7 @@ const browserSyncTask = function() {
   ];
 
   browserSync.init(TASK_CONFIG.browserSync);
-}
+};
 
 gulp.task('browserSync', browserSyncTask);
 module.exports = browserSyncTask;
