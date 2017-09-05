@@ -12,7 +12,7 @@ const productionTask = function(cb) {
   const static = TASK_CONFIG.static ? 'static' : false;
   const { prebuild, postbuild } = TASK_CONFIG.additionalTasks.production;
 
-  gulpSequence('clean', prebuild, tasks.assetTasks, tasks.codeTasks, rev, 'size-report', static, postbuild, cb);
+  gulpSequence('clean', prebuild, tasks.assetTasks, tasks.codeTasks, null, 'size-report', static, postbuild, cb);
 }
 
 gulp.task('build', productionTask);
