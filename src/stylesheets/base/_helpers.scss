@@ -12,8 +12,8 @@
 }
 
 .u-hidden {
-  visibility: hidden;
-  pointer-events: none;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /*
@@ -53,17 +53,17 @@
 // -------------------------
 
 .u-unselectable {
-  cursor: default;
-  user-select: none;
+  cursor: default !important;
+  user-select: none !important;
 }
 
 .u-cursor-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .u-unclickable {
-  pointer-events: none;
-  cursor: default;
+  pointer-events: none !important;
+  cursor: default !important;
 }
 
 // -------------------------

@@ -22,14 +22,6 @@ img {
     transform-origin: center center;
     transition: opacity $transition-image-duration, transform $transition-image-duration;
   }
-}
 
-
-/* -----
-Status
------ */
-.img.loaded {
-  img {
-    opacity: 1;
-  }
+  &.is-loaded img { opacity: 1; }
 }
