@@ -1,6 +1,6 @@
-const os   = require('os')
-const path = require('path')
-const pkg  = require(path.resolve(process.env.PWD, 'package.json'))
+const os   = require('os');
+const path = require('path');
+const pkg  = require(path.resolve(process.env.PWD, 'package.json'));
 
 module.exports = {
   javascripts: {
@@ -24,7 +24,11 @@ module.exports = {
     development: {},
     production: {
       devtool: false,
-      uglifyJsPlugin: {},
+      uglifyJsPlugin: {
+        mangle: {
+          keep_fnames: true
+        }
+      },
       definePlugin: {
         'process.env': {
           'NODE_ENV': JSON.stringify('production')
