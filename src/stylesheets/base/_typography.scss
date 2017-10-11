@@ -21,13 +21,12 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   padding: 0;
   margin-bottom: 1.2em;
+  line-height: 1.2;
 }
 
 a {
   text-decoration: none;
-  &:focus {
-		outline: none;
-	}
+  &:focus { outline: none; }
 }
 
 ul {
@@ -43,3 +42,6 @@ Separator
 /* -----
 Headings
 ----- */
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}

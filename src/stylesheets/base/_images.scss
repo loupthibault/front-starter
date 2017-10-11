@@ -2,6 +2,18 @@
 // IMAGES
 // ------------------------------------------------------------
 
+/* -----
+Global
+----- */
+* {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* -----
+Images
+----- */
 img {
   display: block;
 	pointer-events: none;
@@ -17,7 +29,6 @@ img {
 
   img {
     @include size(100% auto);
-    z-index: 0;
     opacity: 0;
     transform-origin: center center;
     transition: opacity $transition-image-duration, transform $transition-image-duration;

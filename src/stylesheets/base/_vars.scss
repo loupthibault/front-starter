@@ -49,9 +49,12 @@ $base-font: -apple-system, $helvetica;
 /* -----
 Font Weight
 ----- */
-$light: 200;
+$thin:    100;
+$light:   300;
 $regular: 400;
-$bold: 600;
+$medium:  500;
+$bold:    700;
+$back:    900;
 
 
 // -------------------------
@@ -62,14 +65,29 @@ $bold: 600;
 Outer-container
 ----- */
 $max-width: 900px;
-$outer-margin: 100px;
 
+/* -----
+Gutters
+----- */
+
+/* -----
+Margins
+----- */
+$outer-margin: 100px;
 
 /* -----
 Border
 ----- */
 $border-color: $black;
 $border: 1px solid $border-color;
+
+
+/* -----
+Z-Indexes
+----- */
+$z-index-header:      200;
+$z-index-menu-mobile: 300;
+$z-index-popin:       400;
 
 
 /* -----
@@ -92,7 +110,10 @@ $col-12: 		       100%;
 /* -----
 Ratios
 ----- */
-$ratio16-9: 56.25%;
+$ratio-4-3:  75.00%; 
+$ratio-7-5:  71.42%;
+$ratio-imax: 69.93%;
+$ratio-16-9: 56.25%;
 
 
 // -------------------------
@@ -129,7 +150,6 @@ $ease-in-out-back:  cubic-bezier(0.680, -0.550, 0.265, 1.550);
 /* -----
 Transition
 ----- */
-
 $transition-rollover-duration: .15s;
 $transition-rollout-duration: .3s;
 

@@ -105,10 +105,12 @@ Outer-container
 // -------------------------
 
 @mixin resetBtn() {
+  display: inline-block;
   border: none;
   margin: 0;
   padding: 0;
   width: auto;
+  z-index: 0;
   overflow: visible;
   background: transparent;
   color: inherit;
@@ -135,4 +137,23 @@ Outer-container
 @mixin unselectable() {
   cursor: default;
   user-select: none;
+}
+
+// -------------------------
+// Animation
+// -------------------------
+
+@mixin animateAutoAlpha( $value, $duration, $ease:linear ) {
+  
+  @if $value > 0 {
+    opacity: $value;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity $duration $ease 0s, visibility 0s 0s;
+  } @else {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity $duration $ease 0s, visibility 0s $duration;
+  }
 }
